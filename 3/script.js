@@ -1,5 +1,5 @@
 let money, time;
-
+								// Функция ввода начальных данных
 function start() {
 	money = +prompt("Ваш бюджет на месяц", "");
 	time = prompt('Введите дату в формате YYY-MM-DD', "");
@@ -10,7 +10,6 @@ function start() {
 }
 start();
 
-
 let appData = {
 	bud: money,
 	timeData: time,
@@ -19,7 +18,7 @@ let appData = {
 	income: {},
 	savings: true
 };
-
+								// Функция определения обязательных рассходов
 function choose() {
 	for (let i = 0; i < 2; i++){
 		let a = prompt('Введите обязательную статью расходов в этом месяце', ""),
@@ -37,16 +36,13 @@ function choose() {
 	} 
 }
 choose();
-
-
+								// Расчет дневного бюджета
 function detectDayBudget() {
 	appData.moneyPerDay = (appData.bud / 30).toFixed();
 	alert('Бюджет на 1 день = ' + (appData.moneyPerDay));
 }
 detectDayBudget();
-
-// Условие if else
-
+								// Расчет уровня достатка
 function detectLevel() {
 	if (appData.moneyPerDay <=100) {
 		console.log("Минимальный уровень достатка");
@@ -59,7 +55,7 @@ function detectLevel() {
 	}
 }
 detectLevel();
-
+								// Функция определения дохода депозита в месяц
 function checkSavings() {
 	if (appData.savings == true) {
 		let save = +prompt("Какая сумма накомлений"),
@@ -70,7 +66,7 @@ function checkSavings() {
 	}
 }
 checkSavings()
-	 
+								// Функция определения необязательных рассходов 
 function chooseOptExpenses() {
 	for (let i = 0; i < 3; i++){
 		let a = prompt('Статья необязательных расходов', "");
@@ -85,5 +81,4 @@ function chooseOptExpenses() {
 	
 	}
 }
-
 chooseOptExpenses();
