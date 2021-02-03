@@ -28,7 +28,7 @@ ud[0].disabled = true;
 ud[1].disabled = true;
 ud[2].disabled = true;
 
-
+// кнопка начала рассчета и ввода бюджета и даты
 but.addEventListener('click', function () {
 	time = prompt('Введите дату в формате YYY-MM-DD', "");
 	money = +prompt("Ваш бюджет на месяц", "");
@@ -45,10 +45,9 @@ but.addEventListener('click', function () {
 	day.value = new Date(Date.parse(time)).getDate();
 	ud[0].disabled = false;
 	ud[1].disabled = false;
-	ud[2].disabled = false;
-	
+	ud[2].disabled = false;	
 });
-
+// кнопка рассчета и окно ввода обязательных рассходов и вывода их суммы
 ud[0].addEventListener('click', function () {
 	
 	for (let i = 0; i < inp.length; i++) {
@@ -65,11 +64,10 @@ ud[0].addEventListener('click', function () {
 			console.log("warring");
 			i--;
 		}
-
 	}
 	expenses[0].textContent = summa;
 });
-
+// Кнопка необязательных рассходов
 ud[1].addEventListener('click', function () {  
 	for (let i = 0; i < optional.length; i++) {
 		let a = optional[i].value;
@@ -78,7 +76,7 @@ ud[1].addEventListener('click', function () {
 		optionalEx[0].textContent += appData.optionalExpenses[i] + ' ';
 	}
 });
-
+// Кнопка расчета дневного бюджета и уровня достатка и вывода в окно
 ud[2].addEventListener('click', function () {
 	if (appData.bud != undefined) {
 		appData.moneyPerDay = ((appData.bud-summa) / 30).toFixed();
@@ -97,14 +95,14 @@ ud[2].addEventListener('click', function () {
 		budgetDay[0].textContent = "Ошибка! Нажмите Начать расчет";
 	}
 });
- 
+ // Окно ввода дополнительного дохода
 choose.addEventListener('input', function () {
 	let items = choose.value;
 
 	appData.income = items.split(', ');
 	income[0].textContent = appData.income;
 });
-
+// Включение накомплений check-box
 saving.addEventListener('input', function () {
 	if (appData.savings == true) {
 		appData.savings = false;
@@ -112,7 +110,7 @@ saving.addEventListener('input', function () {
 		appData.savings = true;
 	}
 });
-
+// Окно ввода суммы накоплений
 sumV.addEventListener('input', function () {
 	if (appData.savings == true){
 		let sum = +sumV.value,
@@ -121,11 +119,9 @@ sumV.addEventListener('input', function () {
 		appData.yearIncome = sum / 100 * persent;
 		monthSaving[0].textContent = appData.monthIncome.toFixed(1);
 		yearSaving[0].textContent = appData.yearIncome.toFixed(1);
-		
-
 	}
 });
-
+//  Окно ввода процента 
 procV.addEventListener('input', function () {
 	if (appData.savings == true) {
 		let sum = +sumV.value,
